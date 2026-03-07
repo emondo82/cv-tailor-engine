@@ -46,14 +46,26 @@ COMMON_PHRASE_FIXES = {
     "Monitor process performance": "Monitored process performance",
     "suggest solutions": "suggested solutions",
     "recommend improvements": "recommended improvements",
+    "was involved in": "participated in",
+    "helped with": "supported",
+    "performed analysis of": "analysed",
+    "performed review of": "reviewed",
+    "create and maintain": "created and maintained",
+    "identify and define": "identified and defined",
+    "gather and analyze": "gathered and analysed",
+    "gather and analyse": "gathered and analysed",
 }
 
 
-def apply_phrase_fixes(text: str) -> str:
-    refined = text
-    for old, new in COMMON_PHRASE_FIXES.items():
-        refined = refined.replace(old, new)
-    return refined
+READABILITY_FIXES = {
+    "in order to": "to",
+    "with the help of": "using",
+    "the existing": "existing",
+    "the current": "current",
+    "for the purpose of": "for",
+    "in the context of": "for",
+    "a number of": "several",
+}
 
 
 def clean_whitespace(text: str) -> str:
@@ -74,10 +86,6 @@ def remove_noise_prefix(text: str) -> str:
 
 
 def normalize_leading_verb(text: str) -> str:
-    """
-    Replace weak opening phrases only at the beginning.
-    Does not change meaning or add content.
-    """
     lower = text.lower()
 
     for weak, strong in sorted(VERB_UPGRADES.items(), key=lambda x: len(x[0]), reverse=True):
@@ -87,10 +95,27 @@ def normalize_leading_verb(text: str) -> str:
     return text[:1].upper() + text[1:] if text else text
 
 
+def apply_phrase_fixes(text: str) -> str:
+    refined = text
+    for old, new in COMMON_PHRASE_FIXES.items():
+        refined = refined.replace(old, new)
+    return refined
+
+
+def tighten_phrasing(text: str) -> str:
+    refined = text
+    for old, new in READABILITY_FIXES.items():
+        refined = refined.replace(old, new)
+    return refined
+
+
+def fix_double_letters(text: str) -> str:
+    text = re.sub(r"(translated)d\b", r"\1", text)
+    text = re.sub(r"(analysed)d\b", r"\1", text)
+    return text
+
+
 def is_safe_refinement(original: str, refined: str) -> bool:
-    """
-    Guardrails to avoid unsafe changes.
-    """
     if not refined or len(refined) < 4:
         return False
 
@@ -112,10 +137,6 @@ def is_safe_refinement(original: str, refined: str) -> bool:
 
 
 def refine_bullet(bullet: str) -> str:
-    """
-    Deterministic bullet refinement.
-    Preserves meaning and avoids hallucination.
-    """
     if not bullet or not bullet.strip():
         return bullet
 
@@ -127,18 +148,14 @@ def refine_bullet(bullet: str) -> str:
     refined = strip_trailing_punctuation(refined)
     refined = normalize_leading_verb(refined)
     refined = apply_phrase_fixes(refined)
+    refined = tighten_phrasing(refined)
     refined = fix_double_letters(refined)
-    
+
     if not is_safe_refinement(original, refined):
         return original
 
     return refined
 
-def fix_double_letters(text: str) -> str:
-    # fix accidental doubled endings like translatedd, analysedd
-    text = re.sub(r"(translated)d\b", r"\1", text)
-    text = re.sub(r"(analysed)d\b", r"\1", text)
-    return text
 
 def refine_bullets(bullets: List[str]) -> List[str]:
     refined_items: List[str] = []

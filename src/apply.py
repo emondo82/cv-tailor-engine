@@ -9,6 +9,8 @@ from pipeline.jd_stage import load_job_text, analyse_job_description
 from pipeline.match_stage import run_match_stage
 from pipeline.package_stage import build_file_label, package_outputs
 from pipeline.metadata_stage import write_run_metadata
+from ats_coverage import calculate_ats_coverage
+from resume_builder import build_resume
 
 
 def load_json(path: Path) -> dict:
@@ -76,6 +78,8 @@ def main() -> None:
 
     kb = load_json(kb_path)
     match_result = run_match_stage(kb, job_text, jd_skills, top_n=6)
+    resume = build_resume(kb, job_text)
+    ats_coverage = calculate_ats_coverage(jd_skills, resume)
 
     file_label = build_file_label(job_title=job_title, candidate_name=candidate_name)
     packaged_files = package_outputs(
@@ -85,14 +89,15 @@ def main() -> None:
     )
 
     write_run_metadata(
-        output_dir=application_dir,
-        company_name=company_name,
-        job_title=job_title,
-        output_slug=application_slug,
-        jd_skills=jd_skills,
-        project_matches=match_result["project_matches"],
-        files=packaged_files,
-    )
+    output_dir=application_dir,
+    company_name=company_name,
+    job_title=job_title,
+    output_slug=application_slug,
+    jd_skills=jd_skills,
+    project_matches=match_result["project_matches"],
+    ats_coverage=ats_coverage,
+    files=packaged_files,
+)
 
     print("\n=== Done ===")
     print("Generated application package:")

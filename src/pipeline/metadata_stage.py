@@ -12,17 +12,19 @@ def write_run_metadata(
     output_slug: str,
     jd_skills: list[str],
     project_matches: list[dict],
+    ats_coverage: dict,
     files: dict,
 ) -> None:
     metadata = {
-        "company": company_name,
-        "job_title": job_title,
-        "output_slug": output_slug,
-        "generated_at": datetime.now().isoformat(timespec="seconds"),
-        "jd_skills": jd_skills,
-        "project_matches": project_matches,
-        "files": files,
-    }
+    "company": company_name,
+    "job_title": job_title,
+    "output_slug": output_slug,
+    "generated_at": datetime.now().isoformat(timespec="seconds"),
+    "jd_skills": jd_skills,
+    "project_matches": project_matches,
+    "ats_coverage": ats_coverage,
+    "files": files,
+}
 
     metadata_path = output_dir / "run_metadata.json"
     metadata_path.write_text(
