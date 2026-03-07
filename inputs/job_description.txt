@@ -1,0 +1,76 @@
+Company logo for, Morgan Stanley.
+Morgan Stanley
+
+
+Technical Business Analyst 
+
+Budapest, Budapest, Hungary · 1 week ago · 23 people clicked apply
+
+Promoted by hirer · Responses managed off LinkedIn
+
+Hybrid
+Full-time
+Apply
+
+Save
+See how you compare to 23 others who clicked apply
+
+Access exclusive applicant insights, see jobs where you have the highest chance of hearing back, and more.
+
+Retry Premium for HUF0
+
+About the job
+We’re seeking someone to join our team as a Technical Business Analyst to support drive the requirements, execution of the technical redesign and strategy of our platform to meet the goals of the business and delivery/implementation. Candidates should be fluent in spring, databases, and database interface layers and associated Java development tools. Candidate will interface on a regular basis with other teams including other internal IT teams across Wealth Management, BA team, QA team, and global development team. To be successful, the role will require the individual to understand the banking technology landscape, and to offer creative solutions that integrate current capabilities, vendor capabilities, proprietary system builds, and the ability to adapt to changing business requirements.
+
+In the Technology division, we leverage innovation to build the connections and capabilities that power our Firm, enabling our clients and colleagues to redefine markets and shape the future of our communities. This is a Technical Business Analyst position, which is part of the job family responsible for analyzing business processes, identifying needs, and establishing requirements to enhance efficiency and productivity through a blend of business acumen and analytical skills.
+
+Since 1935, Morgan Stanley is known as a global leader in financial services, always evolving and innovating to better serve our clients and our communities in more than 40 countries around the world.
+
+What You'll Do In The Role
+
+Document business and functional requirements, business rules, and User Stories and Epics
+Analyze business processes, functions and procedures across multiple business units.
+Understand and document data requirements for banking products and Downstream impact.
+Create documentation that outlines data lineage and a framework for data governance.
+Become a subject matter expert for banking product data. Assist data consumers, development teams by undertaking data research/analysis tasks and answering questions about the data.
+Work with the developers to define/document existing application infrastructure / architecture.
+Assist with QA/Testing to review/refine test plans and create more detailed test cases.
+Support in responding to Audit queries related to Business process and IT implementation.
+Work with the project team and business to identify and resolve issues that arise during projects or as part of day to day business operations.
+Proactively manage changes in scope, identify potential risks, and devise contingency plans.
+Build, develop, and grow relationships with IT and areas vital to the success of the project.
+Lead all aspects of Business Requirements from elicitation to business process flow mapping to proposing new functionalities to users for optimizing their processes.
+Conduct analysis, scope estimation and impact analysis working with cross-functional teams.
+Create, maintain and groom the Product Backlog, writing User Stories defining acceptance criteria, thereby enabling new functionalities in BMO area.
+Drive Joint Application Development (JAD) sessions with the Business Stakeholders, system architects and technical analysts.
+Identify vertical and horizontal integration touch points. Call out dependencies and risks to ensure smooth development.
+
+What You'll Bring To The Role
+
+At least 6 years’ relevant experience would generally be expected to find the skills required for this role
+Minimum BS degree or equivalent in Computer Science, Engineering, or a related field
+Relevant experience in a large complex banking organization or major consulting firm acting in a business analyst or product owner capacity.
+Experience in Agile Scrum or Kanban lifecycles
+Ability to document business and functional requirements, business rules, and User Stories and Epics of REST based Banking API Management platform.
+Good communication, teamwork, and influencing skills; ability to communicate effectively with technology and key business representatives.
+Strong analytical skills required; Including a thorough understanding of how to interpret customer business needs and translate them into application and operational requirements.
+Process analysis, being able to research and document end to end flows on complex processes and systems.
+Competent and experienced in technology environments (e.g., platforms, applications, databases, organizational structure and culture, teams involved in the successful completion of technology initiatives, etc.).
+
+#BPTECH #FT-1
+
+What You Can Expect From Morgan Stanley
+
+At Morgan Stanley, we raise, manage and allocate capital for our clients – helping them reach their goals. We do it in a way that’s differentiated – and we’ve done that for 90 years. Our values - putting clients first, doing the right thing, leading with exceptional ideas, committing to diversity and inclusion, and giving back - aren’t just beliefs, they guide the decisions we make every day to do what's best for our clients, communities and more than 80,000 employees in 1,200 offices across 42 countries. At Morgan Stanley, you’ll find an opportunity to work alongside the best and the brightest, in an environment where you are supported and empowered. Our teams are relentless collaborators and creative thinkers, fueled by their diverse backgrounds and experiences. We are proud to support our employees and their families at every point along their work-life journey, offering some of the most attractive and comprehensive employee benefits and perks in the industry. There’s also ample opportunity to move about the business for those who show passion and grit in their work.
+
+To learn more about our offices across the globe, please copy and paste https://www.morganstanley.com/about-us/global-offices into your browser.
+
+Certified Persons Regulatory Requirements
+
+If this role is deemed a Certified role and may require the role holder to hold mandatory regulatory qualifications or the minimum qualifications to meet internal company benchmarks.
+
+Flexible work statement 
+
+Interested in flexible working opportunities? Morgan Stanley empowers employees to have greater freedom of choice through flexible working arrangements. Speak to our recruitment team to find out more.
+
+Morgan Stanley is an equal opportunities employer. We work to provide a supportive and inclusive environment where all individuals can maximize their full potential. Our skilled and creative workforce is comprised of individuals drawn from a broad cross section of the global communities in which we operate and who reflect a variety of backgrounds, talents, perspectives, and experiences. Our strong commitment to a culture of inclusion is evident through our constant focus on recruiting, developing, and advancing individuals based on their skills and talents.
