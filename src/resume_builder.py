@@ -8,6 +8,7 @@ from resume_exporter import export_markdown
 from docx_exporter import export_resume_to_docx
 from style_classifier import classify_company_style, style_heading
 from jd_skill_extractor import extract_jd_skills
+from bullet_refiner import refine_bullets
 
 def load_knowledge_base(path: Path):
     with open(path, "r", encoding="utf-8") as f:
@@ -238,10 +239,16 @@ def prioritize_project_bullets(project: dict, job_text: str, max_bullets: int = 
         seen.add(normalized)
         prioritized_bullets.append(bullet)
 
+    prioritized_bullets = prioritized_bullets[:max_bullets]
+    refined_bullets = refine_bullets(prioritized_bullets)
+
     updated_project = dict(project)
-    updated_project["responsibilities"] = prioritized_bullets[:max_bullets]
+    updated_project["responsibilities"] = refined_bullets
 
     return updated_project
+
+prioritized_bullets = prioritized_bullets[:max_bullets]
+refined_bullets = refine_bullets(prioritized_bullets)
 
 def build_resume(kb, job_text, top_n=6):
     ranked = match_projects(kb, job_text)

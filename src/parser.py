@@ -377,3 +377,32 @@ def build_knowledge_base(master_path: Path, ec_path: Path) -> ResumeKnowledgeBas
     )
 
     return kb
+
+
+def save_knowledge_base(kb: ResumeKnowledgeBase, output_path: Path) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        kb.model_dump_json(indent=2, exclude_none=True),
+        encoding="utf-8",
+    )
+    print(f"Knowledge base exported to: {output_path}")
+
+
+def main() -> None:
+    base = Path(__file__).resolve().parent.parent
+
+    master_path = base / "inputs" / "Master Resume.docx"
+    ec_path = base / "inputs" / "EC Format CV.docx"
+    output_path = base / "outputs" / "resume_knowledge_base.json"
+
+    if not master_path.exists():
+        raise FileNotFoundError(f"Missing master resume file: {master_path}")
+    if not ec_path.exists():
+        raise FileNotFoundError(f"Missing EC format CV file: {ec_path}")
+
+    kb = build_knowledge_base(master_path, ec_path)
+    save_knowledge_base(kb, output_path)
+
+
+if __name__ == "__main__":
+    main()

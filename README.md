@@ -48,3 +48,101 @@ cv-tailor-engine/
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+
+How It Works
+Resume pipeline
+Master CV + EC CV
+        ↓
+parser.py
+        ↓
+resume_knowledge_base.json
+        ↓
+job_matcher.py
+        ↓
+resume_builder.py
+        ↓
+tailored_resume.md / tailored_resume.docx
+Cover letter pipeline
+resume_knowledge_base.json + job_description.txt
+        ↓
+cover_letter_builder.py
+        ↓
+tailored_cover_letter.md / tailored_cover_letter.docx
+Setup
+
+Create and activate a virtual environment:
+
+python -m venv .venv
+.venv\Scripts\activate
+
+Install dependencies:
+
+pip install -r requirements.txt
+Usage
+1. Build the knowledge base
+python src/main.py
+2. Generate tailored resume
+python src/resume_builder.py
+3. Generate tailored cover letter
+python src/cover_letter_builder.py
+Notes
+
+The engine is evidence-based and uses the detailed EC-format CV as the source of truth.
+
+The Master Resume is mainly used as a narrative/profile source.
+
+Inputs and outputs are excluded from version control by default.
+
+Planned Improvements
+
+One-command application pipeline
+
+More visible style-based resume templates
+
+Skill-aware bullet rewriting
+
+Improved company/job-title extraction
+
+Optional semantic matching
+
+---
+
+## 2. Check `.gitignore`
+
+Make sure your `.gitignore` contains this:
+
+```gitignore
+.venv/
+__pycache__/
+*.pyc
+outputs/
+.env
+inputs/
+
+That keeps:
+
+personal source files out
+
+generated outputs out
+
+virtual env out
+
+3. Check git status
+
+Run:
+
+git status
+
+You should see your updated code files and README changes.
+
+4. Add everything
+git add .
+5. Commit with a proper message
+
+Use this:
+
+git commit -m "Enhance CV tailoring engine with style detection, JD skill extraction, bullet prioritization, and cover letter export"
+6. Push to GitHub
+git push
+
+Because your remote is already configured, git push should be enough.
