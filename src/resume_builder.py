@@ -9,6 +9,7 @@ from docx_exporter import export_resume_to_docx
 from style_classifier import classify_company_style, style_heading
 from jd_skill_extractor import extract_jd_skills
 from bullet_refiner import refine_bullets
+from bullet_scorer import score_bullet
 
 def load_knowledge_base(path: Path):
     with open(path, "r", encoding="utf-8") as f:
@@ -206,7 +207,7 @@ def extract_priority_terms(job_text: str) -> list[str]:
     return priority_terms
 
 
-def score_bullet(bullet: str, priority_terms: list[str]) -> int:
+def legacy_score_bullet(bullet: str, priority_terms: list[str]) -> int:
     bullet_tokens = tokenize_for_matching(bullet)
     score = 0
 
@@ -221,11 +222,18 @@ def prioritize_project_bullets(project: dict, job_text: str, max_bullets: int = 
     if not responsibilities:
         return project
 
-    priority_terms = extract_priority_terms(job_text)
+    jd_skills = extract_jd_skills(job_text)
+    project_technologies = project.get("technologies", []) or []
 
     scored = []
     for bullet in responsibilities:
-        scored.append((score_bullet(bullet, priority_terms), bullet))
+        bullet_score = score_bullet(
+            bullet=bullet,
+            jd_skills=jd_skills,
+            job_text=job_text,
+            project_technologies=project_technologies,
+        )
+        scored.append((bullet_score, bullet))
 
     scored.sort(key=lambda x: x[0], reverse=True)
 
@@ -246,9 +254,6 @@ def prioritize_project_bullets(project: dict, job_text: str, max_bullets: int = 
     updated_project["responsibilities"] = refined_bullets
 
     return updated_project
-
-prioritized_bullets = prioritized_bullets[:max_bullets]
-refined_bullets = refine_bullets(prioritized_bullets)
 
 def build_resume(kb, job_text, top_n=6):
     ranked = match_projects(kb, job_text)
