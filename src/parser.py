@@ -321,8 +321,35 @@ def split_lines_clean(text: str | None) -> List[str]:
     if not text:
         return []
 
-    lines = [line.strip(" -•\t") for line in text.splitlines()]
-    return [line for line in lines if line]
+    noise_lines = {
+        "External service provider’s roles & responsibilities in the project:",
+        "External service provider's roles & responsibilities in the project:",
+        "Technologies and methodologies used by the external service provider in the project:",
+        "Project description:",
+        "Project size:",
+        "Client (customer):",
+        "Client (customer) :",
+    }
+
+    cleaned_lines = []
+    seen = set()
+
+    for raw_line in text.splitlines():
+        line = raw_line.strip(" -•\t").strip()
+        if not line:
+            continue
+
+        if line in noise_lines:
+            continue
+
+        normalized = " ".join(line.split()).lower()
+        if normalized in seen:
+            continue
+
+        seen.add(normalized)
+        cleaned_lines.append(line)
+
+    return cleaned_lines
 
 
 def split_technologies(text: str | None) -> List[str]:

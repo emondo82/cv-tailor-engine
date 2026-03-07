@@ -1,26 +1,43 @@
 from pathlib import Path
 import json
 from collections import Counter
+import re
 
 from job_matcher import match_projects, load_job_description
 from resume_exporter import export_markdown
 from docx_exporter import export_resume_to_docx
+from style_classifier import classify_company_style, style_heading
+from jd_skill_extractor import extract_jd_skills
 
 def load_knowledge_base(path: Path):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
-def extract_top_skills(projects, max_skills=12):
-    skill_counter = Counter()
+def extract_top_skills(projects, job_text: str, max_skills=12):
+    project_skills = Counter()
 
     for project in projects:
         for tech in project.get("technologies", []) or []:
             cleaned = tech.strip()
             if cleaned:
-                skill_counter[cleaned] += 1
+                project_skills[cleaned] += 1
 
-    return [skill for skill, count in skill_counter.most_common(max_skills)]
+    jd_skills = extract_jd_skills(job_text)
+
+    prioritized = []
+
+    # First add JD-detected skills
+    for skill in jd_skills:
+        if skill not in prioritized:
+            prioritized.append(skill)
+
+    # Then add project-derived skills
+    for skill, _count in project_skills.most_common():
+        if skill not in prioritized:
+            prioritized.append(skill)
+
+    return prioritized[:max_skills]
 
 
 def detect_job_signals(job_text: str):
@@ -156,18 +173,92 @@ def sort_projects_reverse_chronological(projects: list[dict]) -> list[dict]:
         reverse=True,
     )
 
+def tokenize_for_matching(text: str) -> list[str]:
+    text = text.lower()
+    text = re.sub(r"[^a-z0-9\s\-/]", " ", text)
+    tokens = [t for t in text.split() if len(t) > 2]
+    return tokens
+
+
+def extract_priority_terms(job_text: str) -> list[str]:
+    jd_skills = extract_jd_skills(job_text)
+
+    normalized_terms = []
+    for skill in jd_skills:
+        normalized_terms.extend(tokenize_for_matching(skill))
+
+    raw_terms = tokenize_for_matching(job_text)
+
+    stop_words = {
+        "with", "from", "that", "this", "have", "will", "your", "their",
+        "about", "role", "team", "work", "working", "years", "year",
+        "experience", "candidate", "position", "business", "support"
+    }
+
+    filtered_raw_terms = [t for t in raw_terms if t not in stop_words]
+
+    priority_terms = []
+    for term in normalized_terms + filtered_raw_terms:
+        if term not in priority_terms:
+            priority_terms.append(term)
+
+    return priority_terms
+
+
+def score_bullet(bullet: str, priority_terms: list[str]) -> int:
+    bullet_tokens = tokenize_for_matching(bullet)
+    score = 0
+
+    for term in priority_terms:
+        if term in bullet_tokens or term in bullet.lower():
+            score += 1
+
+    return score
+
+def prioritize_project_bullets(project: dict, job_text: str, max_bullets: int = 4) -> dict:
+    responsibilities = project.get("responsibilities", []) or []
+    if not responsibilities:
+        return project
+
+    priority_terms = extract_priority_terms(job_text)
+
+    scored = []
+    for bullet in responsibilities:
+        scored.append((score_bullet(bullet, priority_terms), bullet))
+
+    scored.sort(key=lambda x: x[0], reverse=True)
+
+    prioritized_bullets = []
+    seen = set()
+
+    for _score, bullet in scored:
+        normalized = " ".join(bullet.split()).lower()
+        if normalized in seen:
+            continue
+        seen.add(normalized)
+        prioritized_bullets.append(bullet)
+
+    updated_project = dict(project)
+    updated_project["responsibilities"] = prioritized_bullets[:max_bullets]
+
+    return updated_project
+
 def build_resume(kb, job_text, top_n=6):
     ranked = match_projects(kb, job_text)
     top_projects = [p for score, p in ranked[:top_n]]
     top_projects = sort_projects_reverse_chronological(top_projects)
+    top_projects = [prioritize_project_bullets(p, job_text) for p in top_projects]
+
+    style_result = classify_company_style(job_text)
 
     resume = {
         "summary": generate_tailored_summary(kb, job_text),
-        "skills": extract_top_skills(top_projects),
+        "skills": extract_top_skills(top_projects, job_text),
         "selected_projects": top_projects,
         "education": kb.get("education", []),
         "certifications": kb.get("certifications", []),
         "languages": kb.get("languages", []),
+        "style": style_result,
     }
 
     return resume
@@ -283,13 +374,18 @@ def print_languages(languages):
 def print_resume(resume):
     print("\nTAILORED RESUME\n")
 
+    style_result = resume.get("style", {})
+    print("DETECTED STYLE\n")
+    print(style_heading(style_result))
+    print(style_result.get("reason", ""))
+    print("\n")
+
     print_summary(resume["summary"])
     print_skills(resume["skills"])
     print_experience(resume["selected_projects"])
     print_education(resume["education"])
     print_certifications(resume["certifications"])
     print_languages(resume["languages"])
-
 
 def main():
     base = Path(__file__).resolve().parent.parent
@@ -311,12 +407,16 @@ def main():
     candidate_profile = kb.get("candidate_profile", {})
     candidate_name = candidate_profile.get("name", "Tamas Kosina")
     export_resume_to_docx(
-        resume,
-        docx_output_path,
-        candidate_name=candidate_name,
-        candidate_profile=candidate_profile,
-    )
+    resume,
+    docx_output_path,
+    candidate_name=candidate_name,
+    candidate_profile=candidate_profile,
+    style=resume.get("style", {}),
+    )   
     print(f"DOCX resume exported to: {docx_output_path}")
+    print("\nDetected company style:")
+    print(resume["style"]["style"])
+    print(resume["style"]["reason"])
 
 
 if __name__ == "__main__":

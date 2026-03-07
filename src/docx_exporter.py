@@ -3,12 +3,31 @@ from pathlib import Path
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Pt
+from datetime import datetime
 
 
-def set_document_style(doc: Document):
+def set_document_style(doc: Document, style_type: str):
     normal_style = doc.styles["Normal"]
-    normal_style.font.name = "Calibri"
-    normal_style.font.size = Pt(10)
+
+    if style_type == "enterprise":
+        normal_style.font.name = "Calibri"
+        normal_style.font.size = Pt(10)
+
+    elif style_type == "fintech":
+        normal_style.font.name = "Calibri"
+        normal_style.font.size = Pt(10.5)
+
+    elif style_type == "public_sector":
+        normal_style.font.name = "Times New Roman"
+        normal_style.font.size = Pt(11)
+
+    elif style_type == "consulting":
+        normal_style.font.name = "Calibri"
+        normal_style.font.size = Pt(10)
+
+    else:
+        normal_style.font.name = "Calibri"
+        normal_style.font.size = Pt(10)
 
     for section in doc.sections:
         section.top_margin = Pt(36)
@@ -77,24 +96,51 @@ def add_bullet(doc: Document, text: str):
     p.space_after = Pt(0)
     return p
 
+def normalize_display_date(date_str: str) -> str:
+    if not date_str:
+        return ""
+
+    date_str = " ".join(date_str.split()).strip()
+
+    patterns = [
+        "%d-%m-%Y",
+        "%d/%m/%Y",
+        "%m-%Y",
+        "%m/%Y",
+        "%Y-%m-%d",
+        "%Y/%m/%d",
+    ]
+
+    for pattern in patterns:
+        try:
+            dt = datetime.strptime(date_str, pattern)
+            return dt.strftime("%b %Y")
+        except ValueError:
+            continue
+
+    return date_str
 
 def format_education_line(item: dict) -> str:
     degree = item.get("degree", "")
     field = item.get("field", "")
     institution = item.get("institution", "")
-    start_date = item.get("start_date", "")
-    end_date = item.get("end_date", "")
+    start_date = normalize_display_date(item.get("start_date", ""))
+    end_date = normalize_display_date(item.get("end_date", ""))
 
     line = degree
     if field:
         line += f" in {field}"
     if institution:
         line += f" — {institution}"
-    if start_date or end_date:
+
+    if start_date and end_date:
         line += f" ({start_date} - {end_date})"
+    elif start_date:
+        line += f" ({start_date})"
+    elif end_date:
+        line += f" ({end_date})"
 
     return line
-
 
 def format_certification_line(cert: dict) -> str:
     name = cert.get("name", "")
@@ -125,11 +171,14 @@ def export_resume_to_docx(
     output_path: Path,
     candidate_name: str = "Tamas Kosina",
     candidate_profile: dict | None = None,
+    style: dict | None = None,
 ):
     candidate_profile = candidate_profile or {}
+    style = style or {}
+    style_type = style.get("style", "general")
 
     doc = Document()
-    set_document_style(doc)
+    set_document_style(doc, style_type)
 
     add_name_header(doc, candidate_name)
     add_contact_line(doc, candidate_profile)

@@ -1,10 +1,10 @@
-Company logo for, Morgan Stanley.
-Morgan Stanley
+Company logo for, Schneider Electric.
+Schneider Electric
 
 
-Technical Business Analyst 
+SAP CS, CRM and Oracle Quotation Business Analyst 
 
-Budapest, Budapest, Hungary · 1 week ago · 23 people clicked apply
+Budapest, Budapest, Hungary · Reposted 3 days ago · 46 people clicked apply
 
 Promoted by hirer · Responses managed off LinkedIn
 
@@ -13,64 +13,88 @@ Full-time
 Apply
 
 Save
-See how you compare to 23 others who clicked apply
+See how you compare to 46 others who clicked apply
 
 Access exclusive applicant insights, see jobs where you have the highest chance of hearing back, and more.
 
 Retry Premium for HUF0
 
 About the job
-We’re seeking someone to join our team as a Technical Business Analyst to support drive the requirements, execution of the technical redesign and strategy of our platform to meet the goals of the business and delivery/implementation. Candidates should be fluent in spring, databases, and database interface layers and associated Java development tools. Candidate will interface on a regular basis with other teams including other internal IT teams across Wealth Management, BA team, QA team, and global development team. To be successful, the role will require the individual to understand the banking technology landscape, and to offer creative solutions that integrate current capabilities, vendor capabilities, proprietary system builds, and the ability to adapt to changing business requirements.
+Be part of a global digital transformation
 
-In the Technology division, we leverage innovation to build the connections and capabilities that power our Firm, enabling our clients and colleagues to redefine markets and shape the future of our communities. This is a Technical Business Analyst position, which is part of the job family responsible for analyzing business processes, identifying needs, and establishing requirements to enhance efficiency and productivity through a blend of business acumen and analytical skills.
+Our Services business is a fast‑growing, multi‑billion‑euro organization with bold ambitions. To support this growth, we are transforming how we work — from processes to digital platforms.
 
-Since 1935, Morgan Stanley is known as a global leader in financial services, always evolving and innovating to better serve our clients and our communities in more than 40 countries around the world.
+As an IT Business Analyst, you’ll play a key role in shaping our end‑to‑end front‑office digital solutions and helping the business scale globally.
 
-What You'll Do In The Role
+You’ll work at the intersection of business, IT, and digital platforms, translating complex business needs into scalable, future‑proof solutions.
 
-Document business and functional requirements, business rules, and User Stories and Epics
-Analyze business processes, functions and procedures across multiple business units.
-Understand and document data requirements for banking products and Downstream impact.
-Create documentation that outlines data lineage and a framework for data governance.
-Become a subject matter expert for banking product data. Assist data consumers, development teams by undertaking data research/analysis tasks and answering questions about the data.
-Work with the developers to define/document existing application infrastructure / architecture.
-Assist with QA/Testing to review/refine test plans and create more detailed test cases.
-Support in responding to Audit queries related to Business process and IT implementation.
-Work with the project team and business to identify and resolve issues that arise during projects or as part of day to day business operations.
-Proactively manage changes in scope, identify potential risks, and devise contingency plans.
-Build, develop, and grow relationships with IT and areas vital to the success of the project.
-Lead all aspects of Business Requirements from elicitation to business process flow mapping to proposing new functionalities to users for optimizing their processes.
-Conduct analysis, scope estimation and impact analysis working with cross-functional teams.
-Create, maintain and groom the Product Backlog, writing User Stories defining acceptance criteria, thereby enabling new functionalities in BMO area.
-Drive Joint Application Development (JAD) sessions with the Business Stakeholders, system architects and technical analysts.
-Identify vertical and horizontal integration touch points. Call out dependencies and risks to ensure smooth development.
+What You’ll Do
 
-What You'll Bring To The Role
+Act as a bridge between business stakeholders and IT teams, translating business needs into clear system requirements
+Analyze and challenge requirements, identify gaps, and propose solution enhancements
+Lead cross‑functional workshops to define as‑is and to‑be processes
+Collaborate with internal teams and external IT partners across multiple countries
+Contribute to large‑scale front‑office and services transformation initiatives
+Support digital platforms such as Pricing, Quotation, and CPQ solutions
+Ensure solutions follow reference models and scalable best practices
+Take ownership of specific topics such as RPA, document management, UI/UX, or mobile solutions
 
-At least 6 years’ relevant experience would generally be expected to find the skills required for this role
-Minimum BS degree or equivalent in Computer Science, Engineering, or a related field
-Relevant experience in a large complex banking organization or major consulting firm acting in a business analyst or product owner capacity.
-Experience in Agile Scrum or Kanban lifecycles
-Ability to document business and functional requirements, business rules, and User Stories and Epics of REST based Banking API Management platform.
-Good communication, teamwork, and influencing skills; ability to communicate effectively with technology and key business representatives.
-Strong analytical skills required; Including a thorough understanding of how to interpret customer business needs and translate them into application and operational requirements.
-Process analysis, being able to research and document end to end flows on complex processes and systems.
-Competent and experienced in technology environments (e.g., platforms, applications, databases, organizational structure and culture, teams involved in the successful completion of technology initiatives, etc.).
+What You Bring
 
-#BPTECH #FT-1
+University or Engineering degree (technical or business‑focused)
+5+ years of experience in IT or business analysis roles
+ SAP SD, CS, PS module technical support 3+ experience
+Strong experience translating business requirements into functional or technical specifications
+Exposure to front‑office or enterprise platforms (e.g. Salesforce, Oracle CPQ, Pricefx, Oracle ERP, or similar)
+Experience working in complex, international environments
+Strong analytical and problem‑solving skills
+Confident communication skills with the ability to influence stakeholders at different levels
+Fluency in English
 
-What You Can Expect From Morgan Stanley
+Nice to have:
 
-At Morgan Stanley, we raise, manage and allocate capital for our clients – helping them reach their goals. We do it in a way that’s differentiated – and we’ve done that for 90 years. Our values - putting clients first, doing the right thing, leading with exceptional ideas, committing to diversity and inclusion, and giving back - aren’t just beliefs, they guide the decisions we make every day to do what's best for our clients, communities and more than 80,000 employees in 1,200 offices across 42 countries. At Morgan Stanley, you’ll find an opportunity to work alongside the best and the brightest, in an environment where you are supported and empowered. Our teams are relentless collaborators and creative thinkers, fueled by their diverse backgrounds and experiences. We are proud to support our employees and their families at every point along their work-life journey, offering some of the most attractive and comprehensive employee benefits and perks in the industry. There’s also ample opportunity to move about the business for those who show passion and grit in their work.
+Experience in Services business, digital customer transformations, or global rollout programs
 
-To learn more about our offices across the globe, please copy and paste https://www.morganstanley.com/about-us/global-offices into your browser.
+What We Offer
 
-Certified Persons Regulatory Requirements
+Yearly bonus
+Medicover White Spring medical package
+Life & accident insurance
+Cafeteria allowance
+Home Office allowance
+Hybrid and flexible working model
+Voluntary health & pension fund contribution
+Global Family Leave Package supporting work–life balance
+WESOP (World Employee Share Ownership Plan) – the opportunity to become a shareholder in the company
+Exceptional career opportunities, both locally and internationally
+An international, diverse environment with a culture that encourages asking questions, sharing ideas, and making a real impact
 
-If this role is deemed a Certified role and may require the role holder to hold mandatory regulatory qualifications or the minimum qualifications to meet internal company benchmarks.
+Let us learn about you! Apply today.
 
-Flexible work statement 
+You must submit an online application to be considered for any position with us. This position will be posted until filled.
 
-Interested in flexible working opportunities? Morgan Stanley empowers employees to have greater freedom of choice through flexible working arrangements. Speak to our recruitment team to find out more.
+Looking to make an IMPACT with your career?
 
-Morgan Stanley is an equal opportunities employer. We work to provide a supportive and inclusive environment where all individuals can maximize their full potential. Our skilled and creative workforce is comprised of individuals drawn from a broad cross section of the global communities in which we operate and who reflect a variety of backgrounds, talents, perspectives, and experiences. Our strong commitment to a culture of inclusion is evident through our constant focus on recruiting, developing, and advancing individuals based on their skills and talents.
+When you are thinking about joining a new team, culture matters. At Schneider Electric, our values and behaviors are the foundation for creating a great culture to support business success. We believe that our IMPACT values – Inclusion, Mastery, Purpose, Action, Curiosity, Teamwork – starts with us.
+
+IMPACT is also your invitation to join Schneider Electric where you can contribute to turning sustainability ambition into actions, no matter what role you play. It is a call to connect your career with the ambition of achieving a more resilient, efficient, and sustainable world.
+
+We are looking for IMPACT Makers; exceptional people who turn sustainability ambitions into actions at the intersection of automation, electrification, and digitization. We celebrate IMPACT Makers and believe everyone has the potential to be one.
+
+Become an IMPACT Maker with Schneider Electric – apply today!
+
+€36 billion global revenue
+
++13% organic growth
+
+150 000+ employees in 100+ countries
+
+#1 on the Global 100 World’s most sustainable corporations
+
+You must submit an online application to be considered for any position with us. This position will be posted until filled.
+
+Schneider Electric aspires to be the most inclusive and caring company in the world, by providing equitable opportunities to everyone, everywhere, and ensuring all employees feel uniquely valued and safe to contribute their best. We mirror the diversity of the communities in which we operate, and ‘inclusion’ is one of our core values. We believe our differences make us stronger as a company and as individuals and we are committed to championing inclusivity in everything we do. 
+
+At Schneider Electric, we uphold the highest standards of ethics and compliance, and we believe that trust is a foundational value. Our Trust Charter is our Code of Conduct and demonstrates our commitment to ethics, safety, sustainability, quality and cybersecurity, underpinning every aspect of our business and our willingness to behave and respond respectfully and in good faith to all our stakeholders. You can find out more about our Trust Charter here
+
+Schneider Electric is an Equal Opportunity Employer. It is our policy to provide equal employment and advancement opportunities in the areas of recruiting, hiring, training, transferring, and promoting all qualified individuals regardless of race, religion, color, gender, disability, national origin, ancestry, age, military status, sexual orientation, marital status, or any other legally protected characteristic or conduct.
