@@ -10,6 +10,7 @@ from style_classifier import classify_company_style, style_heading
 from jd_skill_extractor import extract_jd_skills
 from bullet_refiner import refine_bullets
 from bullet_scorer import score_bullet
+from safe_llm_refiner import safe_llm_refine_bullet
 
 def load_knowledge_base(path: Path):
     with open(path, "r", encoding="utf-8") as f:
@@ -248,10 +249,18 @@ def prioritize_project_bullets(project: dict, job_text: str, max_bullets: int = 
         prioritized_bullets.append(bullet)
 
     prioritized_bullets = prioritized_bullets[:max_bullets]
-    refined_bullets = refine_bullets(prioritized_bullets)
+
+    final_bullets = []
+    for bullet in prioritized_bullets:
+        final_bullet, _trace = safe_llm_refine_bullet(
+            bullet=bullet,
+            job_title="Target Role",
+            jd_skills=jd_skills,
+        )
+        final_bullets.append(final_bullet)
 
     updated_project = dict(project)
-    updated_project["responsibilities"] = refined_bullets
+    updated_project["responsibilities"] = final_bullets
 
     return updated_project
 
